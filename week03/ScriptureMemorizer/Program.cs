@@ -1,17 +1,42 @@
 using System;
+using System.Collections.Generic;
+
+
+/// Creativity:
+/// - Preserves punctuation when hiding words (e.g., "uncleanness," → "__________,").
+/// - Supports a library of scriptures (at least 3). Each time the program runs,
+///   a random scripture is chosen for memorization practice.
+/// 
+/// Author: Emmanuel Bawuni Yanwube
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Create the reference for Galatians 5:19
-        Reference reference = new Reference("Galatians", 5, 19);
+        // Create scripture library
+        List<Scripture> library = new List<Scripture>();
 
-        // Verse text
-        string text = "Now the works of the flesh are manifest, which are these; Adultery, fornication, uncleanness, lasciviousness,";
+        // Galatians 5:19
+        library.Add(new Scripture(
+            new Reference("Galatians", 5, 19),
+            "Now the works of the flesh are manifest, which are these; Adultery, fornication, uncleanness, lasciviousness,"
+        ));
 
-        // Create the scripture object
-        Scripture scripture = new Scripture(reference, text);
+        // Proverbs 3:5-6
+        library.Add(new Scripture(
+            new Reference("Proverbs", 3, 5, 6),
+            "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."
+        ));
+
+        // John 3:16
+        library.Add(new Scripture(
+            new Reference("John", 3, 16),
+            "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+        ));
+
+        // Pick one scripture at random
+        Random rand = new Random();
+        Scripture scripture = library[rand.Next(library.Count)];
 
         // Display loop
         while (true)
@@ -25,7 +50,7 @@ class Program
             if (input?.ToLower() == "quit")
                 break;
 
-            // Hide a few random words
+            // Hide 3 words each time
             scripture.HideRandomWords(3);
 
             // End if everything is hidden
@@ -33,9 +58,10 @@ class Program
             {
                 Console.Clear();
                 Console.WriteLine(scripture.GetDisplayText());
-                Console.WriteLine("\nAll words hidden — good job memorizing!");
+                Console.WriteLine("\nAll words hidden — great job memorizing!");
                 break;
             }
         }
     }
 }
+
