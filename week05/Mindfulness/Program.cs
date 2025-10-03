@@ -5,14 +5,6 @@
 // "Gratitude Activity". This activity helps the user focus on gratitude by
 // presenting them with random prompts that encourage deeper reflection on
 // people, places, and experiences they appreciate.
-//
-// This feature is different from the Reflection and Listing activities
-// because it guides the user to slow down and focus on one gratitude thought
-// at a time instead of rapid listing or answering multiple reflection questions.
-//
-// By adding this fourth activity, the program now provides an additional
-// mindfulness tool, which exceeds the project requirements and demonstrates
-// creativity.
 // --------------------------------------
 class Program
 {
